@@ -6,7 +6,8 @@
 <title>Top 15 Roth IRA Providers — 2026 Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
+  /* DARK MODE (default) */
+  :root, [data-theme="dark"] {
     --gold: #C9A84C;
     --gold-light: #F0D080;
     --dark: #0E0E12;
@@ -19,6 +20,28 @@
     --green: #3ECF8E;
     --red: #F06060;
     --accent: #7B9EFF;
+    --header-grad: linear-gradient(135deg, #0a0a10 0%, #1a1520 50%, #0a0a10 100%);
+    --benefit-text: #c5c5d5;
+    --strong-text: #ffffff;
+  }
+
+  /* LIGHT MODE */
+  [data-theme="light"] {
+    --gold: #9C7C1E;
+    --gold-light: #7A5F12;
+    --dark: #F7F5EF;
+    --dark2: #FFFFFF;
+    --dark3: #F0EDE4;
+    --card: #FFFFFF;
+    --border: rgba(156,124,30,0.25);
+    --text: #2A2A2E;
+    --muted: #6B6B5E;
+    --green: #1F9D63;
+    --red: #C23B3B;
+    --accent: #3D5FCC;
+    --header-grad: linear-gradient(135deg, #FBF8F0 0%, #F2EAD8 50%, #FBF8F0 100%);
+    --benefit-text: #44443C;
+    --strong-text: #1A1A1E;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,11 +52,62 @@
     font-family: 'DM Sans', sans-serif;
     line-height: 1.65;
     font-size: 15px;
+    transition: background 0.3s, color 0.3s;
   }
+
+  /* TOP BAR (nav link + theme toggle) */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: var(--dark2);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 7px 14px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .theme-toggle:hover { border-color: var(--gold); }
 
   /* HEADER */
   header {
-    background: linear-gradient(135deg, #0a0a10 0%, #1a1520 50%, #0a0a10 100%);
+    background: var(--header-grad);
     border-bottom: 1px solid var(--border);
     padding: 60px 40px 50px;
     text-align: center;
@@ -64,7 +138,7 @@
     font-size: clamp(28px, 5vw, 52px);
     font-weight: 900;
     line-height: 1.1;
-    color: #fff;
+    color: var(--strong-text);
     margin-bottom: 16px;
   }
 
@@ -123,7 +197,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 26px;
     font-weight: 700;
-    color: #fff;
+    color: var(--strong-text);
     margin-bottom: 8px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--border);
@@ -193,7 +267,7 @@
   .provider-name {
     font-weight: 600;
     font-size: 16px;
-    color: #fff;
+    color: var(--strong-text);
   }
 
   .provider-tagline {
@@ -273,7 +347,7 @@
     gap: 8px;
     align-items: flex-start;
     font-size: 13px;
-    color: #c5c5d5;
+    color: var(--benefit-text);
   }
 
   .benefit-item::before {
@@ -349,7 +423,7 @@
     margin-bottom: 10px;
     font-size: 13px;
     align-items: flex-start;
-    color: #c5c5d5;
+    color: var(--benefit-text);
   }
 
   .pc-dot {
@@ -381,15 +455,214 @@
   }
 
   .verdict p {
-    color: #c5c5d5;
+    color: var(--benefit-text);
     font-size: 14px;
     margin-bottom: 10px;
   }
 
   .verdict p:last-child { margin-bottom: 0; }
 
-  /* FOOTER NOTE */
-  .footer-note {
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 4px;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .filter-btn {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 7px 15px;
+    font-size: 12.5px;
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover { border-color: var(--gold); }
+
+  .filter-btn.active {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+    font-weight: 600;
+  }
+
+  .no-match-msg {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    padding: 30px;
+    font-style: italic;
+  }
+
+  /* GENERIC FEATURE SECTION */
+  .feature-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px;
+    margin-bottom: 48px;
+  }
+
+  /* IRA RESTRICTIONS */
+  .restrict-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  @media(max-width:640px){ .restrict-grid { grid-template-columns: 1fr; } }
+
+  .restrict-item {
+    background: var(--dark3);
+    border: 1px solid rgba(240,96,96,0.18);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .restrict-item.ok { border-color: rgba(62,207,142,0.25); }
+
+  .restrict-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--strong-text);
+    margin-bottom: 6px;
+  }
+
+  .restrict-item p {
+    font-size: 13px;
+    color: var(--benefit-text);
+  }
+
+  /* POWER OF INVESTING */
+  .power-intro {
+    color: var(--benefit-text);
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 22px;
+    max-width: 720px;
+  }
+
+  .growth-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .growth-row:last-of-type { border-bottom: none; }
+
+  .growth-age {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--gold);
+    min-width: 78px;
+  }
+
+  .growth-track {
+    flex: 1;
+    height: 26px;
+    background: var(--dark3);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    min-width: 60px;
+  }
+
+  .growth-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    border-radius: 6px;
+    width: 0;
+    transition: width 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .growth-val {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--strong-text);
+    min-width: 92px;
+    text-align: right;
+  }
+
+  .growth-yrs {
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 64px;
+    text-align: right;
+  }
+
+  @media(max-width:560px){
+    .growth-yrs { display: none; }
+    .growth-val { min-width: 76px; font-size: 14px; }
+    .growth-age { min-width: 60px; font-size: 14px; }
+  }
+
+  .power-note {
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* REFERENCES */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 20px;
+  }
+
+  @media(max-width:640px){ .ref-grid { grid-template-columns: 1fr; } }
+
+  .ref-col h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .ref-col a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13.5px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s, padding-left 0.15s;
+  }
+
+  .ref-col a:hover {
+    color: var(--gold);
+    padding-left: 6px;
+  }
+
+  .ref-col a::before { content: '↗ '; color: var(--muted); font-size: 11px; }
+
+
     border-top: 1px solid var(--border);
     padding-top: 20px;
     font-size: 12px;
@@ -400,6 +673,13 @@
 </style>
 </head>
 <body>
+
+<div class="top-bar">
+  <a class="nav-link" href="https://josh-mc3.github.io/Mr-Macs-Watch-Corner/">📈 Investment Dashboard</a>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+    <span id="themeIcon">☀️</span><span id="themeText">Light Mode</span>
+  </button>
+</div>
 
 <header>
   <div class="eyebrow">2026 Retirement Planning Guide</div>
@@ -428,16 +708,63 @@
 
 <div class="container">
 
+  <!-- IRA RESTRICTIONS / PENALTIES -->
+  <div class="feature-block">
+    <div class="section-title">IRA vs. Brokerage: Know the Rules First</div>
+    <div class="section-sub">A Roth IRA gives you tax-free growth, but unlike a regular brokerage account, that benefit comes with strings attached. Here's what to know before you lock money away.</div>
+    <div class="restrict-grid">
+      <div class="restrict-item ok">
+        <div class="restrict-head">✅ Contributions come out anytime</div>
+        <p>You can withdraw the money you <em>contributed</em> (not the earnings) at any age, tax- and penalty-free. The IRS treats withdrawals as contributions first, earnings last.</p>
+      </div>
+      <div class="restrict-item">
+        <div class="restrict-head">⚠️ The 10% early-withdrawal penalty</div>
+        <p>Withdraw <em>earnings</em> before age 59½ and you generally owe income tax <strong>plus a 10% penalty</strong> on those earnings — unless an exception applies.</p>
+      </div>
+      <div class="restrict-item">
+        <div class="restrict-head">⏳ The 5-year rule</div>
+        <p>Earnings are only tax-free if at least 5 tax years have passed since your first contribution. The clock starts Jan 1 of that first contribution year — even for conversions, which each have their own 5-year clock.</p>
+      </div>
+      <div class="restrict-item">
+        <div class="restrict-head">💵 Annual contribution cap</div>
+        <p>You can only add up to $7,500/yr ($8,600 if 50+) across all your IRAs combined, and only if you have earned income within IRS limits. A brokerage account has no such cap.</p>
+      </div>
+      <div class="restrict-item ok">
+        <div class="restrict-head">✅ Penalty exceptions exist</div>
+        <p>The 10% penalty is waived for things like a first-time home purchase (up to $10,000), disability, qualified education costs, or certain medical expenses.</p>
+      </div>
+      <div class="restrict-item ok">
+        <div class="restrict-head">✅ No Required Minimum Distributions</div>
+        <p>Unlike a Traditional IRA, a Roth has no RMDs — you're never forced to withdraw, so the money can keep compounding tax-free for life.</p>
+      </div>
+    </div>
+    <p class="power-note">Bottom line: a brokerage account is fully liquid and taxable; a Roth IRA trades flexibility for tax-free growth. Treat Roth money as long-term retirement savings to avoid penalties.</p>
+  </div>
+
   <!-- PROVIDER LIST -->
   <div style="margin-bottom:8px">
     <div class="section-title">Provider Breakdown</div>
     <div class="section-sub">Click any provider to expand details. Ranked by overall suitability for most investors.</div>
   </div>
 
+  <div class="filter-bar">
+    <span class="filter-label">Filter by function</span>
+    <button class="filter-btn active" data-filter="all" onclick="filterProviders(this,'all')">All Providers</button>
+    <button class="filter-btn" data-filter="match" onclick="filterProviders(this,'match')">IRA Match</button>
+    <button class="filter-btn" data-filter="robo" onclick="filterProviders(this,'robo')">Robo-Advisor</button>
+    <button class="filter-btn" data-filter="lowcost" onclick="filterProviders(this,'lowcost')">Low-Cost Funds</button>
+    <button class="filter-btn" data-filter="active" onclick="filterProviders(this,'active')">Active Trading</button>
+    <button class="filter-btn" data-filter="beginner" onclick="filterProviders(this,'beginner')">Beginner-Friendly</button>
+    <button class="filter-btn" data-filter="bank" onclick="filterProviders(this,'bank')">Bank Integration</button>
+    <button class="filter-btn" data-filter="advisor" onclick="filterProviders(this,'advisor')">Human Advisors</button>
+  </div>
+
+  <div class="no-match-msg" id="noMatch">No providers match this filter.</div>
+
   <div class="providers-grid" id="providers">
 
     <!-- 1. Fidelity -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="robo lowcost active beginner advisor" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">1</div>
         <div class="provider-icon" style="background:#1a2a4a">🏦</div>
@@ -470,13 +797,13 @@
           <div class="key-stat"><strong>$0</strong><span>Account min</span></div>
           <div class="key-stat"><strong>$0</strong><span>Advisory fee (under $25K)</span></div>
           <div class="key-stat"><strong>0.00%</strong><span>Expense ratio (own funds)</span></div>
-          <div class="key-stat"><strong>Best for</strong><span>Beginners & all-around</span></div>
+          <div class="key-stat"><strong>Best for</strong><span>Beginners &amp; all-around</span></div>
         </div>
       </div>
     </div>
 
     <!-- 2. Charles Schwab -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="robo lowcost active beginner advisor" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">2</div>
         <div class="provider-icon" style="background:#1a2e1a">📊</div>
@@ -515,7 +842,7 @@
     </div>
 
     <!-- 3. Vanguard -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="robo lowcost advisor" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">3</div>
         <div class="provider-icon" style="background:#2a1a1a">🏛️</div>
@@ -554,7 +881,7 @@
     </div>
 
     <!-- 4. Robinhood -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="match active beginner" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">4</div>
         <div class="provider-icon" style="background:#2a1f0a">🤖</div>
@@ -581,19 +908,19 @@
           <div class="benefit-item">Fractional shares starting at $1 for most U.S.-listed stocks and ETFs</div>
           <div class="benefit-item">24/5 extended hours trading (Sunday 8PM–Friday 8PM ET)</div>
           <div class="benefit-item">Clean, beginner-friendly mobile and desktop interface</div>
-          <div class="benefit-item">SIPC insured up to $500,000; registered with SEC & FINRA</div>
+          <div class="benefit-item">SIPC insured up to $500,000; registered with SEC &amp; FINRA</div>
         </div>
         <div class="key-stat-row">
           <div class="key-stat"><strong>1–3%</strong><span>Annual match</span></div>
           <div class="key-stat"><strong>$5/mo</strong><span>Gold (for 3% match)</span></div>
           <div class="key-stat"><strong>5 years</strong><span>Hold req. to keep match</span></div>
-          <div class="key-stat"><strong>Best for</strong><span>Match-seekers & beginners</span></div>
+          <div class="key-stat"><strong>Best for</strong><span>Match-seekers &amp; beginners</span></div>
         </div>
       </div>
     </div>
 
     <!-- 5. Betterment -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="robo advisor" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">5</div>
         <div class="provider-icon" style="background:#0a2a2a">⚡</div>
@@ -632,7 +959,7 @@
     </div>
 
     <!-- 6. SoFi -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="match robo beginner advisor" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">6</div>
         <div class="provider-icon" style="background:#1a1a2e">💡</div>
@@ -671,7 +998,7 @@
     </div>
 
     <!-- 7. Wealthfront -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="robo" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">7</div>
         <div class="provider-icon" style="background:#0e2a1e">🌿</div>
@@ -704,13 +1031,13 @@
           <div class="key-stat"><strong>$500</strong><span>Account min</span></div>
           <div class="key-stat"><strong>0.25%</strong><span>Annual fee</span></div>
           <div class="key-stat"><strong>Daily</strong><span>Tax-loss harvesting</span></div>
-          <div class="key-stat"><strong>Best for</strong><span>Automation & tax strategy</span></div>
+          <div class="key-stat"><strong>Best for</strong><span>Automation &amp; tax strategy</span></div>
         </div>
       </div>
     </div>
 
     <!-- 8. M1 Finance -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="robo lowcost" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">8</div>
         <div class="provider-icon" style="background:#1a2a1a">🎯</div>
@@ -749,7 +1076,7 @@
     </div>
 
     <!-- 9. E*TRADE -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="active robo advisor" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">9</div>
         <div class="provider-icon" style="background:#1e1a2a">📈</div>
@@ -788,7 +1115,7 @@
     </div>
 
     <!-- 10. J.P. Morgan -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="bank robo advisor beginner" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">10</div>
         <div class="provider-icon" style="background:#1a1e2a">🏦</div>
@@ -827,13 +1154,13 @@
     </div>
 
     <!-- 11. Merrill Edge -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="bank robo advisor" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">11</div>
         <div class="provider-icon" style="background:#2a1a0a">🔴</div>
         <div class="card-main">
           <div class="provider-name">Merrill Edge (Bank of America)</div>
-          <div class="provider-tagline">Best Account Variety — Deep BofA integration & Preferred Rewards</div>
+          <div class="provider-tagline">Best Account Variety — Deep BofA integration &amp; Preferred Rewards</div>
         </div>
         <div class="badges">
           <span class="badge badge-gold">Preferred Rewards</span>
@@ -865,7 +1192,7 @@
     </div>
 
     <!-- 12. Acorns -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="match robo beginner" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">12</div>
         <div class="provider-icon" style="background:#1e2a0a">🌰</div>
@@ -904,7 +1231,7 @@
     </div>
 
     <!-- 13. Interactive Brokers -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="active lowcost" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">13</div>
         <div class="provider-icon" style="background:#2a2a0a">⚙️</div>
@@ -942,7 +1269,7 @@
     </div>
 
     <!-- 14. Ally Invest -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="bank robo beginner" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">14</div>
         <div class="provider-icon" style="background:#0a2a2a">🏦</div>
@@ -980,7 +1307,7 @@
     </div>
 
     <!-- 15. Webull -->
-    <div class="provider-card" onclick="toggle(this)">
+    <div class="provider-card" data-tags="match active" onclick="toggle(this)">
       <div class="card-header">
         <div class="rank">15</div>
         <div class="provider-icon" style="background:#1a0e2e">🔬</div>
@@ -1012,16 +1339,61 @@
         <div class="key-stat-row">
           <div class="key-stat"><strong>$0</strong><span>Account min</span></div>
           <div class="key-stat"><strong>3.5%</strong><span>IRA match (premium)</span></div>
-          <div class="key-stat"><strong>Best for</strong><span>Match-maximizers & traders</span></div>
+          <div class="key-stat"><strong>Best for</strong><span>Match-maximizers &amp; traders</span></div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- PROS & CONS -->
+  <!-- POWER OF INVESTING -->
+  <div class="feature-block" id="powerSection">
+    <div class="section-title">The Power of Starting Early</div>
+    <p class="power-intro">A single $10,000 investment, left untouched and growing at an 8% average annual return, becomes dramatically different amounts depending on <strong>when you start</strong>. Each bar below shows what that one-time $10,000 grows into by age 59½ — the age you can withdraw earnings penalty-free.</p>
+
+    <div class="growth-row">
+      <div class="growth-age">Age 20</div>
+      <div class="growth-track"><div class="growth-fill" data-pct="100"></div></div>
+      <div class="growth-val">$209,044</div>
+      <div class="growth-yrs">39.5 yrs</div>
+    </div>
+    <div class="growth-row">
+      <div class="growth-age">Age 25</div>
+      <div class="growth-track"><div class="growth-fill" data-pct="68"></div></div>
+      <div class="growth-val">$142,272</div>
+      <div class="growth-yrs">34.5 yrs</div>
+    </div>
+    <div class="growth-row">
+      <div class="growth-age">Age 30</div>
+      <div class="growth-track"><div class="growth-fill" data-pct="46"></div></div>
+      <div class="growth-val">$96,828</div>
+      <div class="growth-yrs">29.5 yrs</div>
+    </div>
+    <div class="growth-row">
+      <div class="growth-age">Age 35</div>
+      <div class="growth-track"><div class="growth-fill" data-pct="32"></div></div>
+      <div class="growth-val">$65,899</div>
+      <div class="growth-yrs">24.5 yrs</div>
+    </div>
+    <div class="growth-row">
+      <div class="growth-age">Age 40</div>
+      <div class="growth-track"><div class="growth-fill" data-pct="21"></div></div>
+      <div class="growth-val">$44,850</div>
+      <div class="growth-yrs">19.5 yrs</div>
+    </div>
+    <div class="growth-row">
+      <div class="growth-age">Age 50</div>
+      <div class="growth-track"><div class="growth-fill" data-pct="10"></div></div>
+      <div class="growth-val">$20,774</div>
+      <div class="growth-yrs">9.5 yrs</div>
+    </div>
+
+    <p class="power-note">Starting at 20 instead of 40 turns the same $10,000 into nearly 5× as much — without adding a single extra dollar. That gap is compound growth doing the work. Figures assume a constant 8% annual return and no withdrawals; actual returns vary and investing carries risk of loss.</p>
+  </div>
+
+  <!-- PROS &amp; CONS -->
   <div class="pros-cons">
-    <div class="section-title">Pros & Cons by Category</div>
+    <div class="section-title">Pros &amp; Cons by Category</div>
     <div class="section-sub">How different types of providers compare across key factors</div>
 
     <div class="pc-grid">
@@ -1034,7 +1406,7 @@
         <div class="pc-item pro"><div class="pc-dot"></div>Physical branches available for in-person guidance</div>
         <div class="pc-item pro"><div class="pc-dot"></div>Lowest or zero expense ratios on own funds (Fidelity, Vanguard)</div>
         <div class="pc-item pro"><div class="pc-dot"></div>Zero commissions with no hidden subscription fees</div>
-        <div class="pc-item pro"><div class="pc-dot"></div>Multiple IRA types (SEP, SIMPLE, Inherited) for self-employed & more</div>
+        <div class="pc-item pro"><div class="pc-dot"></div>Multiple IRA types (SEP, SIMPLE, Inherited) for self-employed &amp; more</div>
       </div>
       <div class="pc-col">
         <div class="pc-title con">⚠️ Cons of Traditional Brokers</div>
@@ -1086,21 +1458,103 @@
   <!-- VERDICT -->
   <div class="verdict">
     <div class="verdict-title">⚖️ Our Bottom Line</div>
-    <p><strong style="color:#fff">For most investors, Fidelity is the #1 choice</strong> — no minimums, zero-expense-ratio funds, free financial coaching, and a platform that scales from beginner to expert. Charles Schwab is a close second, especially if you want 24/7 human support or advanced trading tools.</p>
-    <p><strong style="color:#fff">The Robinhood match is genuinely compelling math.</strong> A 3% annual match on $7,500 = $225/year in free money that doesn't count toward your contribution limit. Over 30 years at 8% growth, that $225/year compounding could add ~$25,000 to your retirement. However, Robinhood lacks mutual funds, and you must hold matched funds for 5 years — so it works best if you're comfortable with an ETF-only, long-term strategy.</p>
-    <p><strong style="color:#fff">The smart hybrid strategy:</strong> Many investors split — keeping a core portfolio at Fidelity or Vanguard for the fund selection and trust, while also opening a Robinhood Roth IRA to collect the 3% annual match bonus. Since you can contribute to one Roth IRA per year (total max $7,500), you'd have to choose — but you can always roll funds over later.</p>
-    <p><strong style="color:#fff">If you're already at Vanguard</strong> and satisfied, there's no urgent reason to leave — their fund costs are among the lowest in the world and their stability is unmatched. But if the match matters to you, Robinhood Gold's $5/month easily pays for itself on contributions above ~$2,000/year.</p>
+    <p><strong style="color:var(--strong-text)">For most investors, Fidelity is the #1 choice</strong> — no minimums, zero-expense-ratio funds, free financial coaching, and a platform that scales from beginner to expert. Charles Schwab is a close second, especially if you want 24/7 human support or advanced trading tools.</p>
+    <p><strong style="color:var(--strong-text)">The Robinhood match is genuinely compelling math.</strong> A 3% annual match on $7,500 = $225/year in free money that doesn't count toward your contribution limit. Over 30 years at 8% growth, that $225/year compounding could add ~$25,000 to your retirement. However, Robinhood lacks mutual funds, and you must hold matched funds for 5 years — so it works best if you're comfortable with an ETF-only, long-term strategy.</p>
+    <p><strong style="color:var(--strong-text)">The smart hybrid strategy:</strong> Many investors split — keeping a core portfolio at Fidelity or Vanguard for the fund selection and trust, while also opening a Robinhood Roth IRA to collect the 3% annual match bonus. You can hold multiple Roth IRAs, but your total contributions across all of them can't exceed the annual cap ($7,500, or $8,600 if 50+) — so you'd divide that limit between accounts, and can always roll funds over later.</p>
+    <p><strong style="color:var(--strong-text)">If you're already at Vanguard</strong> and satisfied, there's no urgent reason to leave — their fund costs are among the lowest in the world and their stability is unmatched. But if the match matters to you, Robinhood Gold's $5/month easily pays for itself on contributions above ~$2,000/year.</p>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="feature-block" style="margin-top:8px">
+    <div class="section-title">References &amp; Continued Research</div>
+    <div class="section-sub">Official provider sites and trusted resources to verify details and keep learning.</div>
+    <div class="ref-grid">
+      <div class="ref-col">
+        <h4>Provider Official Sites</h4>
+        <a href="https://www.fidelity.com/retirement-ira/roth-ira" target="_blank" rel="noopener">Fidelity — Roth IRA</a>
+        <a href="https://www.schwab.com/ira/roth-ira" target="_blank" rel="noopener">Charles Schwab — Roth IRA</a>
+        <a href="https://investor.vanguard.com/accounts-plans/iras/roth-ira" target="_blank" rel="noopener">Vanguard — Roth IRA</a>
+        <a href="https://robinhood.com/us/en/about/retirement/" target="_blank" rel="noopener">Robinhood — Retirement / IRA Match</a>
+        <a href="https://www.betterment.com/ira" target="_blank" rel="noopener">Betterment — IRA</a>
+        <a href="https://www.sofi.com/invest/retirement/" target="_blank" rel="noopener">SoFi — Retirement Investing</a>
+        <a href="https://www.wealthfront.com/ira" target="_blank" rel="noopener">Wealthfront — IRA</a>
+        <a href="https://m1.com/retirement/" target="_blank" rel="noopener">M1 Finance — Retirement</a>
+      </div>
+      <div class="ref-col">
+        <h4>More Providers &amp; Research</h4>
+        <a href="https://us.etrade.com/what-we-offer/our-accounts/roth-ira" target="_blank" rel="noopener">E*TRADE — Roth IRA</a>
+        <a href="https://www.chase.com/personal/investments/online-investing/retirement-investing" target="_blank" rel="noopener">J.P. Morgan — Retirement</a>
+        <a href="https://www.merrilledge.com/retirement/roth-ira" target="_blank" rel="noopener">Merrill Edge — Roth IRA</a>
+        <a href="https://www.acorns.com/later/" target="_blank" rel="noopener">Acorns — Later (IRA)</a>
+        <a href="https://www.interactivebrokers.com/en/accounts/retirement-accounts.php" target="_blank" rel="noopener">Interactive Brokers — IRAs</a>
+        <a href="https://www.ally.com/invest/individual-retirement-accounts/" target="_blank" rel="noopener">Ally Invest — IRAs</a>
+        <a href="https://www.webull.com/ira" target="_blank" rel="noopener">Webull — IRA</a>
+        <a href="https://www.irs.gov/retirement-plans/roth-iras" target="_blank" rel="noopener">IRS — Roth IRA Rules &amp; Limits</a>
+        <a href="https://investor.vanguard.com/investor-resources-education/iras/ira-withdrawal-rules" target="_blank" rel="noopener">Vanguard — IRA Withdrawal Rules</a>
+        <a href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" target="_blank" rel="noopener">Investor.gov — Compound Interest Calculator</a>
+      </div>
+    </div>
   </div>
 
   <div class="footer-note">
-    Data compiled from NerdWallet, Money.com, CNBC Select, Finder, StockBrokers.com, and Robinhood's official FAQ as of June 2026. This is educational information, not personalized financial advice. Contribution limits, fees, and features are subject to change — always verify with the provider before opening an account.
+    Data compiled from NerdWallet, Money.com, CNBC Select, Finder, StockBrokers.com, the IRS, and providers' official sites as of June 2026. This is educational information, not personalized financial advice. Contribution limits, fees, match terms, and penalty rules are subject to change — always verify with the provider and the IRS before opening an account or making withdrawals.
   </div>
 
 </div>
 
 <script>
+  // Accordion expand/collapse
   function toggle(card) {
     card.classList.toggle('open');
+  }
+
+  // Dark / Light mode
+  function toggleTheme() {
+    const root = document.documentElement;
+    const current = root.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    const icon = document.getElementById('themeIcon');
+    const text = document.getElementById('themeText');
+    if (next === 'light') { icon.textContent = '🌙'; text.textContent = 'Dark Mode'; }
+    else { icon.textContent = '☀️'; text.textContent = 'Light Mode'; }
+  }
+
+  // Filter providers by function
+  function filterProviders(btn, filter) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cards = document.querySelectorAll('#providers .provider-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const tags = (card.getAttribute('data-tags') || '').split(' ');
+      if (filter === 'all' || tags.includes(filter)) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+        card.classList.remove('open');
+      }
+    });
+    document.getElementById('noMatch').style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  // Animate growth bars when scrolled into view
+  function animateBars() {
+    document.querySelectorAll('.growth-fill').forEach(fill => {
+      fill.style.width = fill.getAttribute('data-pct') + '%';
+    });
+  }
+  const powerSection = document.getElementById('powerSection');
+  if ('IntersectionObserver' in window && powerSection) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateBars(); obs.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(powerSection);
+  } else {
+    animateBars();
   }
 </script>
 
